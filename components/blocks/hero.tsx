@@ -170,7 +170,7 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
           </div>
         </div> */}
         
-          <TerminalDemo/>
+          <TerminalDemo />
         
       </section>
     )

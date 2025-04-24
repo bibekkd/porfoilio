@@ -8,7 +8,7 @@ import {
     return (
         <>
         
-      <Terminal className="mb-10">
+      <Terminal className="mb-10 shadow-[0px_0px_50px] shadow-white/10">
         <TypingAnimation>&gt; pnpm dlx shadcn@latest init</TypingAnimation>
   
         <AnimatedSpan delay={1500} className="text-green-500">
