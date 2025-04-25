@@ -5,11 +5,11 @@ import { motion } from "framer-motion"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import MyImage from "@/public/image.jpeg"
 import Image from "next/image"
 import NewImage from "@/public/newImage.jpeg"
 import { TerminalDemo } from "@/section/DemoTeminal"
-import { ShineBorder } from "../magicui/shine-border"
+import { TypingAnimation } from "../magicui/typing-animation"
+
 
 const Hero = React.forwardRef<HTMLElement, HeroProps>(
   (
@@ -117,14 +117,19 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
               className="rounded-full border-4 border-primary/30 shadow-lg hover:scale-105 transition-transform duration-300 mt-20 object-cover"
               priority
             />
+            
             <h1
               className={cn(
                 "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight",
                 titleClassName,
               )}
             >
-              {title}
+              <TypingAnimation className={cn(
+                "text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight",
+                titleClassName,
+              )}>{title}</TypingAnimation>
             </h1>
+            
             {subtitle && (
               <p
                 className={cn(
