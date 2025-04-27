@@ -18,7 +18,8 @@ const EduCard = ({title, description, image, starting, ending, instituteLink}: E
             gradientColor={"#ce8de0" }
             className="p-0 rounded-lg"
         >
-            <Link href={instituteLink} className="flex gap-4 max-w-2xl p-4 bg-white border border-muted-forground rounded-lg shadow hover:bg-background/30 dark:bg-black/40 dark:border-white/40 dark:hover:bg-background/60 shadow-[0px_0px_70px] shadow-white/10">
+            <Link href={instituteLink} className="flex gap-4 max-w-2xl p-4 bg-white border-2 border-muted-forground rounded-lg shadow hover:bg-background/30 dark:bg-black/40 dark:border-white/40 dark:hover:bg-background/60 shadow-[0px_0px_70px] shadow-white/10">
+            
                 {image && (
                     <div className="flex-shrink-0">
                         <Image src={image} alt={title} className="w-20 h-20 object-cover rounded-lg"/>
@@ -29,7 +30,7 @@ const EduCard = ({title, description, image, starting, ending, instituteLink}: E
                         <h5 className="mb-2 text-xl font-bold tracking-tight text-gray-900 dark:text-white">
                             {title}
                         </h5>
-                        <p className="font-normal text-gray-700 dark:text-gray-400 mb-2">
+                        <p className="text-wrap font-normal text-gray-700 dark:text-gray-400 mb-2 overflow-hidden min-h-[3rem] line-clamp-2">
                             {description}
                         </p>
                     </div>

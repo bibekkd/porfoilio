@@ -155,25 +155,6 @@ const Hero = React.forwardRef<HTMLElement, HeroProps>(
             )}
           </div>
         </motion.div>
-        {/* <div>
-          <div className="max-w-3xl mx-auto space-y-4 mb-20">
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              <span className="font-semibold text-primary">Hey there! 👋</span> I'm a passionate pre-final year undergrad with an insatiable curiosity for{' '}
-              <span className="font-medium text-foreground">coding and technology</span>.
-            </p>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              My journey has equipped me with expertise in{' '}
-              <span className="font-medium text-foreground">Web Development</span>,{' '}
-              <span className="font-medium text-foreground">DevOps</span>, and the fascinating realm of{' '}
-              <span className="font-medium text-foreground">AI</span>.
-            </p>
-            <p className="text-xl text-muted-foreground leading-relaxed">
-              I thrive on crafting innovative products and sharing knowledge through blogging. Currently seeking exciting opportunities to apply my tech expertise and create meaningful impact through{' '}
-              <span className="font-medium text-foreground">seamless web experiences</span> and{' '}
-              <span className="font-medium text-foreground">decentralized applications</span>.
-            </p>
-          </div>
-        </div> */}
         
           <TerminalDemo />
         

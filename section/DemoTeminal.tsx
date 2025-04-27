@@ -6,7 +6,6 @@ import {
   
   export function TerminalDemo() {
     return (
-        <>
         
       <Terminal className="mb-10 shadow-[0px_0px_50px] shadow-white/10">
         <TypingAnimation>&gt; pnpm dlx shadcn@latest init</TypingAnimation>
@@ -60,7 +59,7 @@ import {
           You may now add components.
         </TypingAnimation>
       </Terminal>
-      </>
+      
     );
   }
   

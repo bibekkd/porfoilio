@@ -107,9 +107,6 @@ export const Terminal = ({ children, className }: TerminalProps) => {
       )}
     >
       <ShineBorder shineColor={"white"} className="absolute rounded-xl inset-0" />
-      {/* <div className="relative">
-        <ShineBorder shineColor={"white"} className="absolute inset-0" />
-      </div> */}
       <div className="flex flex-col gap-y-2 border-b border-border p-4">
         <div className="flex flex-row gap-x-2">
           <div className="h-2 w-2 rounded-full bg-red-500"></div>
