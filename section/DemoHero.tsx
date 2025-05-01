@@ -4,7 +4,7 @@ function HeroDemo() {
   return (
     <Hero
       title="Hi, I'm Bibek "
-      subtitle="Tech Enthusiast turned Software Engineer . I love building things and helping people. Very active on Twitter."
+      subtitle="Crafting Scalable Apps at the Edge of AI and the Blockchain Revolution."
     //   actions={[
     //     {
     //       label: "Try Demo",

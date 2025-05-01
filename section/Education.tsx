@@ -30,17 +30,19 @@ const Education = () => {
             <h1 className='text-5xl md:text-6xl font-extrabold text-white my-15'>
                 Education
             </h1>
-            <div className='flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20 my-15 w-full max-w-7xl px-4'>
+            <div className='flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20 my-15 w-full max-w-7xl px-4 '>
                 {EduncationData.map((edu, index) => (
-                    <EduCard
-                        key={index}
-                        title={edu.title}
-                        description={edu.description}
-                        image={edu.image}
-                        instituteLink={edu.instituteLink}
-                        starting={edu.starting}
-                        ending={edu.ending}
-                    />
+                    <div key={index} className='transform transition-transform hover:scale-[1.02] duration-300'>
+                        <EduCard
+                            key={index}
+                            title={edu.title}
+                            description={edu.description}
+                            image={edu.image}
+                            instituteLink={edu.instituteLink}
+                            starting={edu.starting}
+                            ending={edu.ending}
+                        />
+                    </div>
                 ))}
             </div>
         </section>

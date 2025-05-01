@@ -1,8 +1,7 @@
 import ProjectCard from '@/components/ProjectCard'
-import { PulsatingButtonDemo } from '@/components/PulsatingButtonDemo';
-import React from 'react'
 
-const ProjectData = [{
+const ProjectData = [
+  {
     title: "Portfolio Website",
     description: "A personal portfolio website built with Next.js and Tailwind CSS showcasing my projects and skills.",
     liveLink: "https://bibek-kumar-dey.vercel.app",
@@ -55,13 +54,13 @@ const ProjectData = [{
 
 const Projects = () => {
   return (
-    <section className='flex w-auto flex-col items-center justify-center overflow-hidden rounded-md bg-background'>
-            <h1 className='text-5xl md:text-6xl font-extrabold text-white my-15'>
+    <section className='flex w-full flex-col items-center justify-center overflow-hidden rounded-md bg-background px-4 sm:px-6 lg:px-8 pb-20'>
+            <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white text-center my-8 sm:my-10 md:my-12 lg:my-15'>
                 Projects
             </h1>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 items-center justify-center gap-5 rounded-lg p-5 mx-20 mb-10'>
+            <div className='w-full max-w-7xl grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-5 md:gap-6 lg:gap-8 rounded-lg p-3 sm:p-4 md:p-5'>
               {ProjectData.map((project, index) => (
-                <div key={index} className='my-5 mx-3 rounded-lg'>
+                <div key={index} className='w-full rounded-lg transform transition-transform hover:scale-[1.02] duration-300'>
                   <ProjectCard key={index} project={project} />
                 </div>
               ))}
