@@ -29,13 +29,13 @@ const ProjectData = [
     sourceLink: "https://github.com/bibekkd/landing-page",
     techStack: ["Next.js", "React", "Tailwind CSS", "shadcn/ui", "Framer Motion"]
   },
-  {
+  /* {
     title: "Landing Page",
     description: "A landing page website built with Next.js and Tailwind CSS, Framer, Shadcn.",
     liveLink: "https://connectly-v1.vercel.app/",
     sourceLink: "https://github.com/bibekkd/connectly-v1",
     techStack: ["Next.js", "React", "Tailwind CSS", "shadcn/ui", "Framer Motion"]
-  },
+  },*/
   // {
   //   title: "Document Summary Assistant App",
   //   description: "A smart application that allows users to upload PDF or image files and generates concise, smart summaries of their content.",
