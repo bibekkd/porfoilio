@@ -43,13 +43,13 @@ const ProjectData = [
   //   sourceLink: "https://github.com/bibekkd/summary-app",
   //   techStack: ["Streamlit", "Python", "Tailwind CSS", "shadcn/ui", "Framer Motion"]
   // },
-  {
-    title: "Game And Grade Analysis Project",
-    description: "An interactive Data visualization dashboard that allows users to explore and analyze data through interactive charts and graphs.",
-    liveLink: "https://my-project-602050-eyh7t8yg.preswald.app/",
-    sourceLink: "https://github.com/bibekkd/preswald_intern_project",
-    techStack: ["Python", "Preswald", "Pandas", "Numpy", "Plotly"]
-  },
+  // {
+  //   title: "Game And Grade Analysis Project",
+  //   description: "An interactive Data visualization dashboard that allows users to explore and analyze data through interactive charts and graphs.",
+  //   liveLink: "https://my-project-602050-eyh7t8yg.preswald.app/",
+  //   sourceLink: "https://github.com/bibekkd/preswald_intern_project",
+  //   techStack: ["Python", "Preswald", "Pandas", "Numpy", "Plotly"]
+  // },
 ];
 
 const Projects = () => {
