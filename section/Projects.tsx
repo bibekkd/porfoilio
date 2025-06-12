@@ -19,7 +19,7 @@ const ProjectData = [
     title: "AI Notes App",
     description: "A AI notes taking app simplies complex notes taking process by simple ui/ux with AI summarization.",
     liveLink: "https://smart-notes-ecru.vercel.app/",
-    sourceLink: "https://github.com/bibekkd/preswald_intern_project",
+    sourceLink: "https://github.com/bibekkd/ai-notes-app",
     techStack: ["Next.js", "React", "Tailwind CSS", "shadcn/ui", "Gemini", "Supabase"]
   },
   {
