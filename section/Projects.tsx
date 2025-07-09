@@ -19,7 +19,7 @@ const ProjectData = [
     title: "AI Notes App",
     description: "A AI notes taking app simplies complex notes taking process by simple ui/ux with AI summarization.",
     liveLink: "https://smart-notes-ecru.vercel.app/",
-    sourceLink: "https://github.com/bibekkd/preswald_intern_project",
+    sourceLink: "https://github.com/bibekkd/ai-notes-app",
     techStack: ["Next.js", "React", "Tailwind CSS", "shadcn/ui", "Gemini", "Supabase"]
   },
   {
@@ -43,13 +43,13 @@ const ProjectData = [
   //   sourceLink: "https://github.com/bibekkd/summary-app",
   //   techStack: ["Streamlit", "Python", "Tailwind CSS", "shadcn/ui", "Framer Motion"]
   // },
-  {
-    title: "Game And Grade Analysis Project",
-    description: "An interactive Data visualization dashboard that allows users to explore and analyze data through interactive charts and graphs.",
-    liveLink: "https://my-project-602050-eyh7t8yg.preswald.app/",
-    sourceLink: "https://github.com/bibekkd/preswald_intern_project",
-    techStack: ["Python", "Preswald", "Pandas", "Numpy", "Plotly"]
-  },
+  // {
+  //   title: "Game And Grade Analysis Project",
+  //   description: "An interactive Data visualization dashboard that allows users to explore and analyze data through interactive charts and graphs.",
+  //   liveLink: "https://my-project-602050-eyh7t8yg.preswald.app/",
+  //   sourceLink: "https://github.com/bibekkd/preswald_intern_project",
+  //   techStack: ["Python", "Preswald", "Pandas", "Numpy", "Plotly"]
+  // },
 ];
 
 const Projects = () => {
