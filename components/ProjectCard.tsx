@@ -6,9 +6,7 @@ import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Github, ExternalLink, Loader2 } from "lucide-react";
 import { MagicCard } from './magicui/magic-card';
 
-
 export default function ProjectCard({ project }) {
-  const [isLoading, setIsLoading] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
   
   // Default project if none is provided
@@ -28,10 +26,6 @@ export default function ProjectCard({ project }) {
     sourceLink, 
     techStack 
   } = project || defaultProject;
-
-  const handleLoad = () => {
-    setIsLoading(false);
-  };
 
   return (
     <MagicCard 
@@ -59,26 +53,23 @@ export default function ProjectCard({ project }) {
               </div>
             </div>
             
-            {/* Iframe-like section (simulated) */}
+            {/* Static preview section - replaced iframe */}
             <div className="flex-1 relative overflow-hidden">
-              {isLoading && (
-                <div className="absolute inset-0 flex items-center justify-center bg-zinc-900">
-                  <Loader2 className="h-6 w-6 animate-spin text-emerald-500" />
-                </div>
-              )}
-              <iframe 
-                src={liveLink}
-                className="w-full h-full border-0"
+              <div 
+                className="w-full h-full bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center"
                 style={{ 
-                  opacity: isLoading ? 0 : 1,
                   transform: `scale(${isHovered ? 0.98 : 1})`,
-                  transition: 'all 0.3s ease-in-out'
+                  transition: 'transform 0.3s ease-in-out'
                 }}
-                onLoad={handleLoad}
-                title={`${title} preview`}
-              />
-              {/* Fallback for iframe security restrictions */}
-              
+              >
+                {/* Static preview placeholder */}
+                <div className="text-center text-zinc-500">
+                  <div className="w-16 h-16 mx-auto mb-2 bg-zinc-700 rounded-lg flex items-center justify-center">
+                    <ExternalLink size={24} />
+                  </div>
+                  <p className="text-sm">Website Preview</p>
+                </div>
+              </div>
             </div>
           </div>
 
