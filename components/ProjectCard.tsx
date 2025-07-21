@@ -1,13 +1,25 @@
 'use client'
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card";
-import { Github, ExternalLink, Loader2 } from "lucide-react";
+import { Github, ExternalLink, AlertCircle } from "lucide-react";
 import { MagicCard } from './magicui/magic-card';
 
-export default function ProjectCard({ project }) {
+interface Project {
+  title: string;
+  description: string;
+  liveLink: string;
+  sourceLink: string;
+  techStack: string[];
+}
+
+export default function ProjectCard({ project }: { project: Project }) {
   const [isHovered, setIsHovered] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
+  const [hasError, setHasError] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
   
   // Default project if none is provided
   const defaultProject = {
@@ -27,20 +39,38 @@ export default function ProjectCard({ project }) {
     techStack 
   } = project || defaultProject;
 
+  // Intersection observer for lazy loading
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
   return (
-    <MagicCard 
-        gradientColor={"#4e6330"}
-        className="p-0 rounded-lg"
-      >
-      <Card className="overflow-hidden border-zinc-800 bg-zinc-900/30 backdrop-blur-sm transition-all duration-300 hover:border-zinc-700 hover:shadow-lg hover:shadow-emerald-500/10 flex flex-col h-full shadow-[0px_0px_70px] shadow-white/10">
-          
-        <div 
-          className="h-48 overflow-hidden relative bg-zinc-950"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+    <div ref={cardRef}>
+      <MagicCard 
+          gradientColor={"#4e6330"}
+          className="p-0 rounded-lg"
         >
-          {/* Vercel-like preview container */}
-          <div className="absolute inset-0 flex flex-col w-full h-full">
+        <Card className="overflow-hidden border-zinc-800 bg-zinc-900/50 transition-all duration-200 hover:border-zinc-700 hover:shadow-lg hover:shadow-emerald-500/20 flex flex-col h-full">
+            
+          <div 
+            className="h-48 overflow-hidden relative bg-zinc-950"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
             {/* Browser-like header */}
             <div className="h-6 bg-zinc-800 flex items-center px-2 border-b border-zinc-700">
               <div className="flex gap-1.5">
@@ -49,46 +79,87 @@ export default function ProjectCard({ project }) {
                 <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
               </div>
               <div className="flex-1 flex justify-center">
-                <div className="bg-zinc-700 rounded-md h-3.5 w-32 mx-auto"></div>
-              </div>
-            </div>
-            
-            {/* Static preview section - replaced iframe */}
-            <div className="flex-1 relative overflow-hidden">
-              <div 
-                className="w-full h-full bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center"
-                style={{ 
-                  transform: `scale(${isHovered ? 0.98 : 1})`,
-                  transition: 'transform 0.3s ease-in-out'
-                }}
-              >
-                {/* Static preview placeholder */}
-                <div className="text-center text-zinc-500">
-                  <div className="w-16 h-16 mx-auto mb-2 bg-zinc-700 rounded-lg flex items-center justify-center">
-                    <ExternalLink size={24} />
-                  </div>
-                  <p className="text-sm">Website Preview</p>
+                <div className="bg-zinc-700 rounded-md h-3.5 w-32 mx-auto flex items-center justify-center">
+                  <span className="text-xs text-zinc-400 truncate px-2">{new URL(liveLink).hostname}</span>
                 </div>
               </div>
             </div>
-          </div>
+            
+            {/* Website preview iframe */}
+            <div className="flex-1 relative overflow-hidden">
+              {isInView ? (
+                <>
+                  {/* Loading state */}
+                  {isLoading && (
+                    <div className="absolute inset-0 bg-zinc-900 flex items-center justify-center">
+                      <div className="text-center text-zinc-500">
+                        <div className="w-8 h-8 border-2 border-zinc-600 border-t-zinc-400 rounded-full animate-spin mx-auto mb-2"></div>
+                        <p className="text-sm">Loading preview...</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Error state */}
+                  {hasError && (
+                    <div className="absolute inset-0 bg-zinc-900 flex items-center justify-center">
+                      <div className="text-center text-zinc-500">
+                        <AlertCircle size={24} className="mx-auto mb-2" />
+                        <p className="text-sm">Preview unavailable</p>
+                      </div>
+                    </div>
+                  )}
+                  
+                  {/* Iframe */}
+                  {!hasError && (
+                    <div className="w-full h-full overflow-hidden">
+                      <iframe
+                        src={liveLink}
+                        className="border-0"
+                        style={{
+                          width: '100%',
+                          height: '100%',
+                          transform: isHovered ? 'scale(0.95)' : 'scale(1)',
+                          transformOrigin: 'center',
+                          transition: 'transform 0.2s ease-in-out'
+                        }}
+                        onLoad={() => setIsLoading(false)}
+                        onError={() => {
+                          setHasError(true);
+                          setIsLoading(false);
+                        }}
+                        sandbox="allow-same-origin"
+                        loading="lazy"
+                      />
+                    </div>
+                  )}
+                </>
+              ) : (
+                // Placeholder before intersection
+                <div className="w-full h-full bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
+                  <div className="text-center text-zinc-500">
+                    <ExternalLink size={24} className="mx-auto mb-2" />
+                    <p className="text-sm">Website Preview</p>
+                  </div>
+                </div>
+              )}
+            </div>
 
-          {/* Hover overlay */}
-          <div className={`absolute inset-0 bg-gradient-to-t from-zinc-950/80 to-transparent transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
-          
-          {/* Visit site button on hover */}
-          <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
-            <Button
-              size="sm"
-              className="bg-white text-black hover:bg-gray-200"
-              asChild
-            >
-              <a href={liveLink} target="_blank" rel="noopener noreferrer">
-                Visit Site
-              </a>
-            </Button>
+            {/* Hover overlay */}
+            <div className={`absolute inset-0 bg-gradient-to-t from-zinc-950/60 to-transparent transition-opacity duration-200 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
+            
+            {/* Visit site button on hover */}
+            <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-200 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+              <Button
+                size="sm"
+                className="bg-white text-black hover:bg-gray-200"
+                asChild
+              >
+                <a href={liveLink} target="_blank" rel="noopener noreferrer">
+                  Visit Site
+                </a>
+              </Button>
+            </div>
           </div>
-        </div>
         
         <CardHeader className="px-4 pt-4 pb-2">
           <h3 className="text-xl font-bold tracking-tight text-white">{title}</h3>
@@ -98,7 +169,7 @@ export default function ProjectCard({ project }) {
           <p className="text-sm text-zinc-400 mb-4">{description}</p>
           
           <div className="flex flex-wrap gap-2">
-            {techStack.map((tech) => (
+            {techStack.map((tech: string) => (
               <Badge key={tech} variant="outline" className="bg-zinc-800 text-zinc-300 border-zinc-700 hover:bg-zinc-700">
                 {tech}
               </Badge>
@@ -132,5 +203,6 @@ export default function ProjectCard({ project }) {
         </CardFooter>
       </Card>
     </MagicCard>
+    </div>
   );
 }
