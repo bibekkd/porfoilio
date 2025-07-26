@@ -10,16 +10,4 @@ const nextConfig: NextConfig = {
   },
 };
 
-module.exports = {
-  async redirects() {
-    return [
-      {
-        source: '/',
-        destination: '/lander',
-        permanent: false,
-      },
-    ]
-  },
-}
-
 export default nextConfig;
