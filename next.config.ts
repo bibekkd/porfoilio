@@ -1,12 +1,20 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
-  "eslint": {
-    "ignoreDuringBuilds": true
+  eslint: {
+    ignoreDuringBuilds: true
   },
-  "typescript": {
-    "ignoreBuildErrors": true
+  typescript: {
+    ignoreBuildErrors: true
+  },
+  async redirects() {
+    return [
+      {
+        source: '/lander',
+        destination: '/',
+        permanent: true,
+      },
+    ]
   },
 };
 
