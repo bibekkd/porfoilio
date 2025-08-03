@@ -8,7 +8,7 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true
   },
   // Uncomment this line if your hosting provider is forcing /lander path
-  // basePath: '/lander',
+  basePath: '/lander',
   async redirects() {
     return [
       {
