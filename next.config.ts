@@ -7,16 +7,29 @@ const nextConfig: NextConfig = {
   typescript: {
     ignoreBuildErrors: true
   },
-  // Uncomment this line if your hosting provider is forcing /lander path
-  basePath: '/lander',
-  async redirects() {
+  async rewrites() {
     return [
+      // Rewrite /lander to serve the root page content (internal rewrite)
       {
         source: '/lander',
         destination: '/',
-        permanent: true,
       },
-      // Add redirect from www to non-www if needed
+      // Rewrite /lander/ to serve the root page content (internal rewrite)
+      {
+        source: '/lander/',
+        destination: '/',
+      },
+    ]
+  },
+  async redirects() {
+    return [
+      // Redirect root to /lander if hosting provider expects it
+      {
+        source: '/',
+        destination: '/lander',
+        permanent: false, // Use temporary redirect to avoid caching issues
+      },
+      // Redirect www to non-www
       {
         source: '/:path*',
         has: [
