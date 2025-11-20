@@ -64,7 +64,7 @@ export function IconCloudDemo() {
 
     return (
         <div className="relative flex size-full items-center justify-center overflow-hidden">
-        <IconCloud images={images} />
+            <IconCloud images={images} />
         </div>
     );
 }
@@ -73,25 +73,25 @@ export function IconCloudDemo() {
 const SkillSection = () => {
     return (
         <section className='flex h-auto w-full flex-col items-center justify-center overflow-hidden rounded-md bg-background mt-20 md:mt-40 px-4 md:px-0'>
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white text-center mb-8 md:mb-12">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground text-center mb-8 md:mb-12">
                 My Tech Arsenal
             </h1>
             <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-7xl gap-8 md:gap-4">
                 <div className="flex flex-wrap items-center justify-center gap-2 w-full md:w-1/2 p-4 md:pl-20">
                     {flusx.map((text, index) => (
-                        <MagicCard 
-                            gradientColor={"#0505fa"}
-                            className="p-0 rounded-md transform transition-transform hover:scale-105" 
+                        <MagicCard
+                            gradientColor={"#D946EF"}
+                            className="p-0 rounded-md transform transition-transform hover:scale-105 border-border bg-card/50 backdrop-blur-sm"
                             key={index}
                         >
-                            <p className="bg-white text-black p-2 hover:bg-white/65 rounded-md text-[10px] sm:text-xs font-semibold border-1 whitespace-nowrap">
+                            <p className="bg-secondary/50 text-secondary-foreground p-2 hover:bg-secondary/80 rounded-md text-[10px] sm:text-xs font-semibold border border-border whitespace-nowrap transition-colors">
                                 {text}
                             </p>
                         </MagicCard>
                     ))}
                 </div>
                 <div className="w-full md:w-1/2 h-[300px] md:h-[400px]">
-                    <IconCloudDemo/>
+                    <IconCloudDemo />
                 </div>
             </div>
         </section>

@@ -6,7 +6,7 @@ import BuildMVPImage from '@/public/logo.png'
 import DiligenAI from "@/public/diligence_ai.png"
 
 const ExperienceData = [
-    {   
+    {
         index: 0,
         title: 'Full Stack Developer',
         description: 'Full Stack Developer at Diligence AI, worked in fully functional production level web application',
@@ -15,7 +15,7 @@ const ExperienceData = [
         starting: 'August 2025',
         ending: 'October 2025'
     },
-    {   
+    {
         index: 1,
         title: 'React Native Developer Intern',
         description: 'React Native Developer at BioPass, worked in creating a mobile app for BioPass',
@@ -24,7 +24,7 @@ const ExperienceData = [
         starting: 'October 2025',
         ending: 'Present'
     },
-    {   
+    {
         index: 2,
         title: 'React Native Developer Intern',
         description: 'React Native Developer at BuildMVP, worked in creating a mobile app for BuildMVP',
@@ -33,7 +33,7 @@ const ExperienceData = [
         starting: 'June 2025',
         ending: 'August 2025'
     },
-    {   
+    {
         index: 3,
         title: 'Full Stack Developer',
         description: 'Full Stack Freelance Developer, worked in different Production level app design to production',
@@ -47,7 +47,7 @@ const ExperienceData = [
 const Experience = () => {
     return (
         <section className='flex w-auto flex-col items-center justify-center overflow-hidden rounded-md bg-background my-10'>
-            <h1 className='text-5xl md:text-6xl font-extrabold text-white my-15'>
+            <h1 className='text-5xl md:text-6xl font-extrabold text-foreground my-15'>
                 Experience
             </h1>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6 my-15 w-full max-w-7xl px-4'>

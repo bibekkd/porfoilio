@@ -61,26 +61,26 @@ export default function ProjectCard({ project }: { project: Project }) {
   return (
     <div ref={cardRef}>
       <MagicCard 
-          gradientColor={"#4e6330"}
+          gradientColor={"#D946EF"} /* Fuchsia-500 for a vibrant purple glow */
           className="p-0 rounded-lg"
         >
-        <Card className="overflow-hidden border-zinc-800 bg-zinc-900/50 transition-all duration-200 hover:border-zinc-700 hover:shadow-lg hover:shadow-emerald-500/20 flex flex-col h-full">
+        <Card className="overflow-hidden border-border bg-card/30 backdrop-blur-sm transition-all duration-300 hover:border-primary/50 hover:shadow-lg hover:shadow-primary/20 flex flex-col h-full group">
             
           <div 
-            className="h-48 overflow-hidden relative bg-zinc-950"
+            className="h-48 overflow-hidden relative bg-muted/20"
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
             {/* Browser-like header */}
-            <div className="h-6 bg-zinc-800 flex items-center px-2 border-b border-zinc-700">
+            <div className="h-6 bg-muted/40 flex items-center px-2 border-b border-border/50">
               <div className="flex gap-1.5">
-                <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500"></div>
-                <div className="w-2.5 h-2.5 rounded-full bg-green-500"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-red-500/80"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/80"></div>
+                <div className="w-2.5 h-2.5 rounded-full bg-green-500/80"></div>
               </div>
               <div className="flex-1 flex justify-center">
-                <div className="bg-zinc-700 rounded-md h-3.5 w-32 mx-auto flex items-center justify-center">
-                  <span className="text-xs text-zinc-400 truncate px-2">{new URL(liveLink).hostname}</span>
+                <div className="bg-muted/50 rounded-md h-3.5 w-32 mx-auto flex items-center justify-center">
+                  <span className="text-[10px] text-muted-foreground truncate px-2 font-mono">{new URL(liveLink).hostname}</span>
                 </div>
               </div>
             </div>
@@ -91,9 +91,9 @@ export default function ProjectCard({ project }: { project: Project }) {
                 <>
                   {/* Loading state */}
                   {isLoading && (
-                    <div className="absolute inset-0 bg-zinc-900 flex items-center justify-center">
-                      <div className="text-center text-zinc-500">
-                        <div className="w-8 h-8 border-2 border-zinc-600 border-t-zinc-400 rounded-full animate-spin mx-auto mb-2"></div>
+                    <div className="absolute inset-0 bg-card flex items-center justify-center">
+                      <div className="text-center text-muted-foreground">
+                        <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin mx-auto mb-2"></div>
                         <p className="text-sm">Loading preview...</p>
                       </div>
                     </div>
@@ -101,9 +101,9 @@ export default function ProjectCard({ project }: { project: Project }) {
                   
                   {/* Error state */}
                   {hasError && (
-                    <div className="absolute inset-0 bg-zinc-900 flex items-center justify-center">
-                      <div className="text-center text-zinc-500">
-                        <AlertCircle size={24} className="mx-auto mb-2" />
+                    <div className="absolute inset-0 bg-card flex items-center justify-center">
+                      <div className="text-center text-muted-foreground">
+                        <AlertCircle size={24} className="mx-auto mb-2 text-destructive" />
                         <p className="text-sm">Preview unavailable</p>
                       </div>
                     </div>
@@ -120,7 +120,7 @@ export default function ProjectCard({ project }: { project: Project }) {
                           height: '100%',
                           transform: isHovered ? 'scale(0.95)' : 'scale(1)',
                           transformOrigin: 'center',
-                          transition: 'transform 0.2s ease-in-out'
+                          transition: 'transform 0.3s ease-in-out'
                         }}
                         onLoad={() => setIsLoading(false)}
                         onError={() => {
@@ -135,9 +135,9 @@ export default function ProjectCard({ project }: { project: Project }) {
                 </>
               ) : (
                 // Placeholder before intersection
-                <div className="w-full h-full bg-gradient-to-br from-zinc-800 to-zinc-900 flex items-center justify-center">
-                  <div className="text-center text-zinc-500">
-                    <ExternalLink size={24} className="mx-auto mb-2" />
+                <div className="w-full h-full bg-gradient-to-br from-muted/20 to-muted/40 flex items-center justify-center">
+                  <div className="text-center text-muted-foreground">
+                    <ExternalLink size={24} className="mx-auto mb-2 opacity-50" />
                     <p className="text-sm">Website Preview</p>
                   </div>
                 </div>
@@ -145,13 +145,13 @@ export default function ProjectCard({ project }: { project: Project }) {
             </div>
 
             {/* Hover overlay */}
-            <div className={`absolute inset-0 bg-gradient-to-t from-zinc-950/60 to-transparent transition-opacity duration-200 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
+            <div className={`absolute inset-0 bg-gradient-to-t from-background/80 to-transparent transition-opacity duration-300 ${isHovered ? 'opacity-100' : 'opacity-0'}`} />
             
             {/* Visit site button on hover */}
-            <div className={`absolute inset-0 flex items-center justify-center transition-opacity duration-200 ${isHovered ? 'opacity-100' : 'opacity-0'}`}>
+            <div className={`absolute inset-0 flex items-center justify-center transition-all duration-300 ${isHovered ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
               <Button
                 size="sm"
-                className="bg-white text-black hover:bg-gray-200"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg shadow-primary/20"
                 asChild
               >
                 <a href={liveLink} target="_blank" rel="noopener noreferrer">
@@ -162,15 +162,15 @@ export default function ProjectCard({ project }: { project: Project }) {
           </div>
         
         <CardHeader className="px-4 pt-4 pb-2">
-          <h3 className="text-xl font-bold tracking-tight text-white">{title}</h3>
+          <h3 className="text-xl font-bold tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">{title}</h3>
         </CardHeader>
         
         <CardContent className="px-4 py-2 flex-grow">
-          <p className="text-sm text-zinc-400 mb-4">{description}</p>
+          <p className="text-sm text-muted-foreground mb-4 line-clamp-3">{description}</p>
           
           <div className="flex flex-wrap gap-2">
             {techStack.map((tech: string) => (
-              <Badge key={tech} variant="outline" className="bg-zinc-800 text-zinc-300 border-zinc-700 hover:bg-zinc-700">
+              <Badge key={tech} variant="outline" className="bg-secondary/50 text-secondary-foreground border-secondary hover:bg-secondary/80 transition-colors">
                 {tech}
               </Badge>
             ))}
@@ -181,7 +181,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           <Button 
             variant="outline" 
             size="sm" 
-            className="gap-1 border-blue-700 bg-blue-800 text-zinc-300 hover:bg-blue-700 hover:text-white" 
+            className="gap-1 border-border bg-background/50 text-muted-foreground hover:bg-accent hover:text-accent-foreground transition-colors" 
             asChild
           >
             <a href={sourceLink} target="_blank" rel="noopener noreferrer">
@@ -192,7 +192,7 @@ export default function ProjectCard({ project }: { project: Project }) {
           
           <Button 
             size="sm" 
-            className="gap-1 bg-emerald-600 hover:bg-emerald-500 text-white" 
+            className="gap-1 bg-secondary text-secondary-foreground hover:bg-secondary/80" 
             asChild
           >
             <a href={liveLink} target="_blank" rel="noopener noreferrer">

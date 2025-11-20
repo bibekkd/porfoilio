@@ -65,28 +65,28 @@ const FreelanceProjectData = [
 const Projects = () => {
   return (
     <section className='flex w-full flex-col items-center justify-center overflow-hidden rounded-md bg-background px-4 sm:px-6 lg:px-8 pb-20'>
-            <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white text-center my-8 sm:my-10 md:my-12 lg:my-15'>
-                Projects
-            </h1>
-            <div className='w-full max-w-6xl grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-8 rounded-lg p-3 sm:p-4 md:p-5'>
-              {ProjectData.map((project, index) => (
-                <div key={index} className='w-full rounded-lg'>
-                  <ProjectCard key={index} project={project} />
-                </div>
-              ))}
-            </div>
-            <div>
-{/*               <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white text-center my-8 sm:my-10 md:my-12 lg:my-15'>
+      <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground text-center my-8 sm:my-10 md:my-12 lg:my-15'>
+        Projects
+      </h1>
+      <div className='w-full max-w-6xl grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-8 rounded-lg p-3 sm:p-4 md:p-5'>
+        {ProjectData.map((project, index) => (
+          <div key={index} className='w-full rounded-lg'>
+            <ProjectCard key={index} project={project} />
+          </div>
+        ))}
+      </div>
+      <div>
+        {/*               <h1 className='text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-white text-center my-8 sm:my-10 md:my-12 lg:my-15'>
                   Recent Freelance Projects
               </h1> */}
-              {/* <div className='w-full max-w-6xl grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-8 rounded-lg p-3 sm:p-4 md:p-5'>
+        {/* <div className='w-full max-w-6xl grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 gap-4 sm:gap-5 md:gap-6 lg:gap-8 rounded-lg p-3 sm:p-4 md:p-5'>
                 {FreelanceProjectData.map((project, index) => (
                   <div key={index} className='w-full rounded-lg'>
                     <ProjectCard key={index} project={project} />
                   </div>
                 ))}
             </div> */}
-            </div>
+      </div>
     </section>
   )
 }
