@@ -53,7 +53,7 @@ const ConnectWithMe = () => {
 
             <div className="relative z-10 md:mb-10 w-full text-center">
                 <h1
-                    className="text-[10vw] font-bold leading-none tracking-tighter text-foreground select-none pointer-events-none"
+                    className="text-[10vw] font-bold leading-none tracking-tighter bg-gradient-to-b from-black to-gray-300/80 bg-clip-text select-none pointer-events-none text-transparent dark:from-gray-300 dark:to-slate-900/10"
                     style={{ fontFamily: 'var(--font-syne)' }}
                 >
                     Bibek Kumar Dey

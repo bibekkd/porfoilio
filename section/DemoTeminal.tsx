@@ -22,10 +22,6 @@ export function TerminalDemo() {
           <span>✔ AI tools detected: OpenAI SDK, LangChain.</span>
         </AnimatedSpan>
 
-        {/* <AnimatedSpan delay={3000} className="text-green-500">
-        <span>✔ Web3 ready: Ethers.js, Wagmi configured.</span>
-      </AnimatedSpan> */}
-
         <AnimatedSpan delay={3000} className="text-green-500">
           <span>✔ Installing dependencies...</span>
         </AnimatedSpan>
