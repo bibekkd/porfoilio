@@ -90,8 +90,11 @@ const SkillSection = () => {
                         </MagicCard>
                     ))}
                 </div>
-                <div className="w-full md:w-1/2 h-[300px] md:h-[400px]">
-                    <IconCloudDemo />
+                <div className="w-full md:w-1/2 h-[300px] md:h-[400px] relative flex items-center justify-center">
+                    <div className="absolute inset-0 bg-gradient-to-r from-purple-700/10 to-fuchsia-700/10 blur-3xl rounded-full" />
+                    <div className="relative z-10 drop-shadow-[0_0_15px_rgba(255,255,255,0.1)]">
+                        <IconCloudDemo />
+                    </div>
                 </div>
             </div>
         </section>

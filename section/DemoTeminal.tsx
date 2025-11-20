@@ -45,7 +45,5 @@ export function TerminalDemo() {
         </TypingAnimation>
       </Terminal>
     </div>
-
-
   );
 }

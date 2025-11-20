@@ -31,7 +31,7 @@ const ExperienceData = [
         image: BuildMVPImage,
         instituteLink: 'https://buildmvpfa.st/',
         starting: 'June 2025',
-        ending: 'August 2025'
+        ending: 'July 2025'
     },
     {
         index: 3,
@@ -40,7 +40,7 @@ const ExperienceData = [
         image: WorkImage,
         instituteLink: '',
         starting: '2024',
-        ending: '2025'
+        ending: 'Present'
     }
 ]
 
